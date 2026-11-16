@@ -88,9 +88,7 @@ and image upload and deletion functionality. Reused the
 shared authentication, reference-data, audit, and media
 services. Added eight unit tests and connected HotelsModule
 to the existing backend.
-================================================
 
-================================================
 Date: 2026-11-06
 Student: Mostafa Eltatawi
 Tool: ChatGPT
@@ -111,7 +109,6 @@ five-image limit, and the 5 MB file-size restriction.
 Fixed formatting issues and verified the TypeScript
 checks, backend build, lint, and all 65 automated tests.
 Reviewed the Git changes before preparing the commit.
-================================================
 Date: 2026-11-06
 Student: Mostafa Eltatawi
 Tool: ChatGPT
@@ -120,7 +117,6 @@ Related Requirement: HTL-01, HTL-02, HTL-03, ACC-11, GEN-08
 Prompt: Help implement HTL-03 room management using the existing NestJS hotel module, including room validation, moderator authorization, unique room identifiers, and tests.
 
 How the output was used: Implemented and reviewed the room schema, DTO, service, controller, and automated tests. Verified with TypeScript, lint, build, 73 passing tests, Swagger, and MongoDB Atlas.
-================================================
 Date: 2026-11-06
 Student: Mostafa Eltatawi
 Tool: ChatGPT
@@ -128,7 +124,6 @@ Related Requirement: HTL-01, HTL-02, HTL-03, HTL-04 ACC-11, GEN-08
 Prompt: Explain how to implement HTL-04 room availability ranges in the existing NestJS hotel module, with date validation, overlapping-range prevention, moderator authorization, and tests.
 
 How the output was used: Implemented and reviewed the schema, DTO, service, endpoint, and tests. Verified with 82 passing automated tests, Swagger, MongoDB Atlas, and a separate concurrent-update test.
-================================================
 Date: 08/11/2026
 
 Student Mostafa Eltatawi
@@ -154,7 +149,6 @@ I used ChatGPT's explanations and code examples to develop and review the room-d
 I verified the functionality using 99 passing automated tests, 2 isolated MongoDB concurrency tests, Swagger API requests, and MongoDB Compass. I also tested invalid dates (400), unauthorized access (403), nonexistent availability ranges (404), and overlapping dates (409).
 
 The AI helped me understand partial updates, date-range comparisons, and concurrent database operations. Booking-related safeguards, including preserving existing reservations and their price snapshots, were identified as remaining integration work.
-================================================
 Date: 09/11/2026
 Student: Mostafa Eltatawi
 AI Tool Used: ChatGPT (OpenAI)
@@ -175,8 +169,6 @@ Added unit tests and isolated MongoDB concurrency/integration tests. Verified th
 
 HTL-06 is not fully complete. Booking-conflict restrictions, deletion restricted to never-reserved rooms, and inactive-room exclusion from search must be completed during hotel-booking and search integration.
 
-================================================
-================================================
 Date: 09/11/2026
 AI Tool: ChatGPT (OpenAI)
 Related Requirements: HTL-09, HTL-10
@@ -197,7 +189,6 @@ Verification included 123 passing unit tests, 4 passing MongoDB integration test
 
 The configured hotel policy must be integrated into booking summaries and cancellation/refund execution when HTL-16 and HTL-21 are implemented.
 
-================================================
 Date: 09/11/2026
 
 AI Tool: ChatGPT (OpenAI)
@@ -216,7 +207,6 @@ The implementation follows the existing NestJS architecture, reuses the hotel an
 Verification included **136 passing unit tests, 5 passing MongoDB integration tests**, successful typechecking, linting, and build, followed by Swagger and MongoDB Compass verification of search results, price and rating filters, blocked dates, and inactive-room exclusion.
 
 Booking-conflict checks involving confirmed reservations and pending payment holds were identified as dependencies for the upcoming hotel booking implementation.
-=========================================================================
 Date: 09/11/2026  
 AI Tool: ChatGPT (OpenAI)  
 Related Requirements: HTL-16, HTL-17, HTL-18
@@ -232,7 +222,6 @@ AI-assisted technical consultation was used to design and implement the hotel bo
 The implementation follows the project's NestJS architecture, shared booking status conventions, authentication and authorization requirements, and MongoDB transaction patterns.
 
 Verification included 146 passing unit tests, 6 passing isolated MongoDB integration tests, successful typechecking, linting, and production build. Swagger testing was also performed to validate the booking API behavior.
-================================================
 
 Date: 10/11/2026
 
@@ -260,8 +249,6 @@ The isolated MongoDB integration test was extended to verify that confirmed, exp
 
 All changes were reviewed, committed as `45a437f`, and pushed to the HTL-20 feature branch.
 
-================================================
-================================================
 
 Date: 10/11/2026
 
@@ -293,8 +280,6 @@ Added cancellation tracking to the hotel booking schema and extended the automat
 
 Actual Stripe refund processing was not performed during testing; external payment requests were mocked to protect shared and external systems.
 
-================================================
-================================================
 
 Date: 11/11/2026
 
@@ -332,4 +317,32 @@ Verified the implementation with 148 passing existing unit tests, 10 passing new
 
 Full manual acceptance testing against the shared application environment was not performed.
 
-================================================
+Date: 2026-11-05
+Student: Kenzie (team leader)
+Tool: Claude
+Related Requirement: GEN-12, ACC-15, FLT-02
+Prompt:
+The project description was revised (official CSV reference datasets with IANA time zones and
+currencies from Countries.csv; new PATCH /api/admin/providers/:type/:id/deactivate|reactivate;
+updated endpoint requirement labels). Update the project for these changes and review what's new.
+How the output was used:
+Seeder now reads the official CSVs and keeps their ids (city_id, attraction_id); reference lookups
+accept those ids. Added the ACC-15 provider (de)activation endpoints for airlines with
+notifications, audit logging and an e2e test; airlines use active/inactive. Restored .env.example
+and updated the work split.
+Date: 2026-11-11
+Student: Omar (Person 5)
+Tool: Claude
+Related Requirement: ITN-01, ITN-03, ITN-05, ITN-07, ITN-08, ITN-09, ITN-10, ITN-12, ITN-14, ITN-16, ITN-18, ITN-20, ITN-21, ITN-25, ITN-26
+Prompt:
+I am Person 5 (Itineraries, Budgeting & Exchange Rates) and must finish my requirements today.
+Read the project PDF (section 8.8), docs/WORK_SPLIT.md and docs/CONVENTIONS.md and implement the
+Itineraries and ExchangeRates modules following the team's existing patterns, then explain the code.
+How the output was used:
+Generated the itineraries module (itinerary CRUD + visibility, embedded ordered days with derived
+day numbers/dates and city grouping, activities with images via MediaService, budget entries,
+intercity transport costs, converted budget summary, public search, clone with attribution,
+hotel/flight search from the itinerary) and the exchange-rates module (FXRatesAPI through the
+backend with a daily MongoDB cache, stale fallback and 503 FX_UNAVAILABLE). ITN-25 uses an
+ItineraryHooksService that HotelsModule registers with. Reviewed the code, added unit tests for the
+day logic and currency maths, and checked every endpoint appears in Swagger.

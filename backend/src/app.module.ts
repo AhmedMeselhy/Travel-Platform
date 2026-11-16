@@ -11,6 +11,7 @@ import configuration from './config/configuration';
 import { validateEnv } from './config/env.validation';
 import { HealthController } from './health.controller';
 
+import { AdminModule } from './modules/admin/admin.module';
 import { AuditModule } from './modules/audit/audit.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { FlightBookingsModule } from './modules/flight-bookings/flight-bookings.module';
@@ -22,6 +23,9 @@ import { NotificationsModule } from './modules/notifications/notifications.modul
 import { PaymentsModule } from './modules/payments/payments.module';
 import { ReferenceDataModule } from './modules/reference-data/reference-data.module';
 import { UsersModule } from './modules/users/users.module';
+import { FlightsModule } from './modules/flights/flights.module';
+import { ItinerariesModule } from './modules/itineraries/itineraries.module';
+import { ExchangeRatesModule } from './modules/exchange-rates/exchange-rates.module';
 
 @Module({
   imports: [
@@ -66,11 +70,11 @@ import { UsersModule } from './modules/users/users.module';
     PaymentsModule, // Person 3
     HotelsModule, // Person 4
     HotelBookingsModule, // Person 4 — HTL-16/17/18
-    // ItinerariesModule,      // Person 5
-    // ExchangeRatesModule,    // Person 5
+    ItinerariesModule, // Person 5
+    ExchangeRatesModule, // Person 5
     // BlogModule,             // Person 6
     // ReportsModule,          // Person 6
-    // AdminModule,            // Person 6
+    AdminModule, // Person 6 (ACC-15 provider status so far)
   ],
 
   controllers: [HealthController],
